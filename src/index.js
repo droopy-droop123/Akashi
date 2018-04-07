@@ -1,4 +1,5 @@
 import Akashi from "./Akashi";
+import "babel-polyfill";
 
 if (!process.env.TOKEN) throw new Error("No token specified");
 
