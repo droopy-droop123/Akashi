@@ -1,17 +1,30 @@
 import Eris from "eris";
+import handler from "./handler";
 
 export default class Akashi {
-    static bot = new Eris(process.env.BOT_TOKEN, {
-        disableEvents: {
-            TYPING_START: true
-        }
-    });
+    static config = null;
+    static bot = null;
 
-    constructor() {
-        /* do stuff here */
+    constructor({ token, prefixes }) {
+        this.config = {
+            token,
+            prefixes
+        };
+
+        Akashi.config = this.config;
+
+        this.bot = new Eris(token, {
+            disableEvents: {
+                TYPING_START: true
+            }
+        });
+
+        Akashi.bot = this.bot;
+
+        this.bot.on("messageCreate", handler.onMessage);
     }
 
     connect() {
-        return Akashi.bot.connect();
+        return this.bot.connect();
     }
 }
