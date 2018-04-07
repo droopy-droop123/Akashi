@@ -1,6 +1,6 @@
 import Eris from "eris";
 import handler from "./handler";
-import fs from "fs";
+import glob from "glob";
 import path from "path";
 
 export default class Akashi {
@@ -23,8 +23,8 @@ export default class Akashi {
 
         Akashi.bot = this.bot;
 
-        for (const file of fs.readdirSync(path.resolve(__dirname, dir || "cmds"))) {
-            require(path.resolve(__dirname, dir || "cmds", file));
+        for (const file of glob.sync(path.resolve(__dirname, dir || "cmds", "**/*.js"))) {
+            require(file);
         }
 
         this.bot.on("messageCreate", handler.onMessage);

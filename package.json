@@ -4,9 +4,9 @@
   "description": "A Discord bot",
   "main": "build/index.js",
   "scripts": {
-    "build": "babel src -d build",
-    "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "eslint . && babel src -d build",
+    "start": "eslint . && babel src -d build && node build/index.js",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "eslint": "^4.19.1"
   },
   "dependencies": {
-    "eris": "^0.8.5"
+    "eris": "^0.8.5",
+    "glob": "^7.1.2"
   }
 }
