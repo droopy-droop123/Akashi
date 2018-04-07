@@ -11,6 +11,7 @@ export default {
                     subcommands: new Map(),
                     description
                 });
+                console.log("Loaded command:", n);
             } else {
                 console.warn("Command exists:", n);
             }
